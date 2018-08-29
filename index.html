@@ -12,8 +12,17 @@
 
     <script>
 
-        let number = prompt("When was the year President Duterte elected?",'');
-        if (number == 2016) alert( 'You are correct!' );
+        let year = prompt("When was the year President Duterte elected?",'');
+        if (year < 2016) {
+            alert('Too Early');
+        }
+        else if (year > 2016) {
+            alert('Too late!');
+        }
+        else {
+            alert('Correct!');
+        }
+
     
 
     </script>
