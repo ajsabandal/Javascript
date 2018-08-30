@@ -9,7 +9,12 @@
 </head>
 
 <body>
-    <h1>When was Duterte elected?</h1>
+    <h1>Who's the fairest of them all?</h1>
+    <ul style="list-style-type: upper-alpha;">
+            <li>Cinderella</li>
+            <li>Snow White</li>
+            <li>Belle</li>
+    </ul>
     <form id="mainForm">
         <input type="text" id="mainInput" />
         <button type="submit">Submit Answer</button>
@@ -21,22 +26,24 @@
         const mainForm = document.getElementById("mainForm");
         const mainInput = document.getElementById("mainInput");
         const result = document.getElementById("result");
-        let year;
+        let a;
 
         mainForm.addEventListener("submit", function (event) {
-            console.log("submit");
-            year = mainInput.value
+            a = mainInput.value
             event.preventDefault();
 
-            if (year < 2016) {
-                result.innerHTML = "Too Early"
-            }
-            else if (year > 2016) {
-                result.innerHTML = "Too Late"
-            }
-            else {
+        switch(a){
+            case "A":
+                result.innerHTML = "Wrong!"
+                break;
+            case "B":
                 result.innerHTML = "Correct!"
-            }
+                break;
+            case "C":
+                result.innerHTML = "Wrong!"
+                break;
+        }
+
         });
 
 
