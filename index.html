@@ -5,29 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title> 
+    <title>Document</title>
 </head>
 
 <body>
+    <h1>When was Duterte elected?</h1>
+    <form id="mainForm">
+        <input type="text" id="mainInput" />
+        <button type="submit">Submit Answer</button>
+    </form>
+
+    <div id="result"></div>
 
     <script>
+        const mainForm = document.getElementById("mainForm");
+        const mainInput = document.getElementById("mainInput");
+        const result = document.getElementById("result");
+        let year;
 
-        let year = prompt("When was the year President Duterte elected?",'');
-        if (year < 2016) {
-            alert('Too Early');
-        }
-        else if (year > 2016) {
-            alert('Too late!');
-        }
-        else {
-            alert('Correct!');
-        }
+        mainForm.addEventListener("submit", function (event) {
+            console.log("submit");
+            year = mainInput.value
+            event.preventDefault();
 
-    
+            if (year < 2016) {
+                result.innerHTML = "Too Early"
+            }
+            else if (year > 2016) {
+                result.innerHTML = "Too Late"
+            }
+            else {
+                result.innerHTML = "Correct!"
+            }
+        });
+
+
 
     </script>
 
-    <p>..After the Script</p>
 
 
 </body>
