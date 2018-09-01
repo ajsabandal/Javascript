@@ -6,52 +6,170 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        .calcHolder {
+            margin: 0 auto;
+            background-color: black;
+            width: 400px;
+            border-radius: 5px;
+        }
+
+        .calcScreen {
+            width: 360px;
+            margin: 10px;
+            border: 0;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 20px;
+            text-align: right;
+        }
+
+        .row {
+            display: flex;
+        }
+
+        .row>button {
+            flex: 1;
+            margin: 0 10px 10px 10px;
+            border: 0;
+            background-image: none;
+            border-radius: 5px;
+            font-size: 20px;
+            padding: 10px 0;
+        }
+
+        .row>button:hover {
+            opacity: .75;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Who's the fairest of them all?</h1>
-    <ul style="list-style-type: upper-alpha;">
-            <li>Cinderella</li>
-            <li>Snow White</li>
-            <li>Belle</li>
-    </ul>
-    <form id="mainForm">
-        <input type="text" id="mainInput" />
-        <button type="submit">Submit Answer</button>
-    </form>
-
-    <div id="result"></div>
-
+    <div class="calcHolder">
+        <input readonly type="text" id="calcScreen" class="calcScreen" />
+        <div class="calcButton">
+            <div class="row one">
+                <button id="button1">1</button>
+                <button id="button2">2</button>
+                <button id="button3">3</button>
+                <button id="buttonPlus">+</button>
+            </div>
+            <div class="row two">
+                <button id="button4">4</button>
+                <button id="button5">5</button>
+                <button id="button6">6</button>
+                <button id="buttonMinus">-</button>
+            </div>
+            <div class="row three">
+                <button id="button7">7</button>
+                <button id="button8">8</button>
+                <button id="button9">9</button>
+                <button id="buttonMultiply">*</button>
+            </div>
+            <div class="row four">
+                <button id="buttonClear">C</button>
+                <button id="button0">0</button>
+                <button id="buttonEnter">Enter</button>
+                <button id="buttonDivide">/</button>
+            </div>
+        </div>
+    </div>
     <script>
-        const mainForm = document.getElementById("mainForm");
-        const mainInput = document.getElementById("mainInput");
-        const result = document.getElementById("result");
-        let a;
+        let calcScreen = document.getElementById("calcScreen");
+        let button1 = document.getElementById("button1");
+        let button2 = document.getElementById("button2");
+        let button3 = document.getElementById("button3");
+        let button4 = document.getElementById("button4");
+        let button5 = document.getElementById("button5");
+        let button6 = document.getElementById("button6");
+        let button7 = document.getElementById("button7");
+        let button8 = document.getElementById("button8");
+        let button9 = document.getElementById("button9");
+        let button0 = document.getElementById("button0");
+        let buttonPlus = document.getElementById("buttonPlus");
+        let buttonMinus = document.getElementById("buttonMinus");
+        let buttonMultiply = document.getElementById("buttonMultiply");
+        let buttonDivide = document.getElementById("buttonDivide");
+        let buttonClear = document.getElementById("buttonClear");
+        let buttonEnter = document.getElementById("buttonEnter");
 
-        mainForm.addEventListener("submit", function (event) {
-            a = mainInput.value
-            event.preventDefault();
+        let data = [];
 
-        switch(a){
-            case "A":
-                result.innerHTML = "Wrong!"
-                break;
-            case "B":
-                result.innerHTML = "Correct!"
-                break;
-            case "C":
-                result.innerHTML = "Wrong!"
-                break;
+        function addbits(s) {
+            var total = 0, s = s.match(/[+\-]*(\.\d+|\d+(\.\d+)?)/g) || [];
+            while (s.length) {
+                total += parseFloat(s.shift());
+            }
+            return total;
         }
 
+        button1.addEventListener("click", function () {
+            data.push(1);
+            calcScreen.value = data.join("");
+        });
+        button2.addEventListener("click", function () {
+            data.push(2);
+            calcScreen.value = data.join("");
+        });
+        button3.addEventListener("click", function () {
+            data.push(3);
+            calcScreen.value = data.join("");
+        });
+        button4.addEventListener("click", function () {
+            data.push(4);
+            calcScreen.value = data.join("");
+        });
+        button5.addEventListener("click", function () {
+            data.push(5);
+            calcScreen.value = data.join("");
+        });
+        button6.addEventListener("click", function () {
+            data.push(6);
+            calcScreen.value = data.join("");
+        });
+        button7.addEventListener("click", function () {
+            data.push(7);
+            calcScreen.value = data.join("");
+        });
+        button8.addEventListener("click", function () {
+            data.push(8);
+            calcScreen.value = data.join("");
+        });
+        button9.addEventListener("click", function () {
+            data.push(9);
+            calcScreen.value = data.join("");
+        });
+        button0.addEventListener("click", function () {
+            data.push(0);
+            calcScreen.value = data.join("");
+        });
+        buttonPlus.addEventListener("click", function () {
+            data.push("+");
+            calcScreen.value = data.join("");
+        });
+        buttonMinus.addEventListener("click", function () {
+            data.push("-");
+            calcScreen.value = data.join("");
+        });
+        buttonMultiply.addEventListener("click", function () {
+            data.push("*");
+            calcScreen.value = data.join("");
+        });
+        buttonDivide.addEventListener("click", function () {
+            data.push("/");
+            calcScreen.value = data.join("");
+        });
+        buttonClear.addEventListener("click", function () {
+            calcScreen.value = [];
+            data = [];
+        });
+        buttonEnter.addEventListener("click", function () {
+            calcScreen.value = addbits(data.join(""));
         });
 
 
 
     </script>
-
-
-
 </body>
 
 </html>
